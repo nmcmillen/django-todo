@@ -32,6 +32,7 @@ class Note(models.Model):
     note_text = models.CharField(blank=True, max_length = 255)
     created_on = models.DateTimeField(auto_now_add = True)
     updated_on = models.DateTimeField(auto_now = True)
+    # blank = True this in future
     due_by = models.DateTimeField(blank=True)
     note_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # May need to add numbers as '1' instead of direct integer
@@ -46,7 +47,7 @@ class Note(models.Model):
     )
 
     def __str__(self):
-        return f"{self.note_title} {self.note_text}"
+        return f"{self.note_title} - {self.note_text}"
 
 
 

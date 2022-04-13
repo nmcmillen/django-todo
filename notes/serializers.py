@@ -1,14 +1,17 @@
 from .models import Note, Category, Event
-from rest_framework import serializers
+from rest_framework.serializers import *
 
-class NoteSerializer(serializers.HyperlinkedModelSerializer):
+class NoteSerializer(ModelSerializer):
     class Meta:
         model = Note
-        fields = [
-            'id',
-            'author',
-            'title',
-            'date',
-            'duration',
-            'all_day',
-        ]
+        fields = '__all__'
+        # [
+        #     # potentially add 'url',
+        #     'id',
+        #     'note_title',
+        #     'note_text',
+        #     'created_on',
+        #     'updated_on',
+        #     'due_by',
+        #     'note_category'
+        # ]
