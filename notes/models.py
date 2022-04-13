@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length = 100)
+    
+    class Meta:
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.title
@@ -26,10 +29,10 @@ class Note(models.Model):
     # user.id???
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     note_title = models.CharField(max_length = 100)
-    note_text = models.CharField(max_length = 255)
+    note_text = models.CharField(blank=True, max_length = 255)
     created_on = models.DateTimeField(auto_now_add = True)
     updated_on = models.DateTimeField(auto_now = True)
-    due_by = models.DateTimeField()
+    due_by = models.DateTimeField(blank=True)
     note_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # May need to add numbers as '1' instead of direct integer
     CHOICE_SELECTION = [
