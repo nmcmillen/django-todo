@@ -133,3 +133,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
     'https://*.gitpod.io',
     ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+         'rest_framework.permissions.AllowAny',
+    ]
+}
+#     # 'DEFAULT_AUTHENTICATION_CLASSES': [
+#     #     'rest_framework.authentication.BasicAuthentication',
+#     #     'rest_framework.authentication.SessionAuthentication',
+#     # ],

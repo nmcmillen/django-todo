@@ -20,6 +20,7 @@ from notes.serializers import *
 from notes import views
 
 router = routers.DefaultRouter()
+# r'notes' is the endpoint after "api" in urlpatterns
 router.register(r'notes', views.NoteViewSet)
 router.register(r'events', views.EventViewSet)
 router.register(r'categories', views.CategoryViewSet)

@@ -17,8 +17,8 @@ class Category(models.Model):
 class Event(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length = 100)
-    date = models.DateField()
-    duration = models.DurationField
+    date = models.DateField(null=True)
+    # duration = models.DurationField()
     all_day = models.BooleanField()
     # location = models.Point()
 
@@ -32,8 +32,8 @@ class Note(models.Model):
     note_text = models.CharField(blank=True, max_length = 255)
     created_on = models.DateTimeField(auto_now_add = True)
     updated_on = models.DateTimeField(auto_now = True)
-    # blank = True this in future
-    due_by = models.DateTimeField(blank=True)
+    completed = models.BooleanField(default=False)
+    due_by = models.DateTimeField(null=True)
     note_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # May need to add numbers as '1' instead of direct integer
     CHOICE_SELECTION = [

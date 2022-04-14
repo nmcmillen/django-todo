@@ -9,9 +9,11 @@ class NoteSerializer(ModelSerializer):
             'note_title',
             'note_text',
             'created_on',
-            # 'updated_on',
-            # 'due_by',
-            'note_category'
+            'updated_on',
+            'completed',
+            'due_by',
+            'note_category',
+            'priority_choices'
         ]
 
 class CategorySerializer(ModelSerializer):
