@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from notes.serializers import *
-# pretty unsure here
 from notes import views
 
 router = routers.DefaultRouter()
 router.register(r'notes', views.NoteViewSet)
+router.register(r'events', views.EventViewSet)
+router.register(r'categories', views.CategoryViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include(router.urls)),
     path('api/', include(router.urls))
+    # path('', include(router.urls)),
 ]
