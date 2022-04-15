@@ -3,11 +3,17 @@ from django.shortcuts import render
 from .models import Note, Category, Event
 from rest_framework import viewsets, permissions
 from .serializers import NoteSerializer, EventSerializer, CategorySerializer
+from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
+
 
 # Create your views here.
 class NoteViewSet(viewsets.ModelViewSet):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['id', 'note_title']
+    search_fields = ['note_title', 'note_text']
     # permission_classes = [permissions.IsAuthenticated]
     # permissions if needed
 
