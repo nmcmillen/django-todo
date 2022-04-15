@@ -6,6 +6,7 @@ class NoteSerializer(ModelSerializer):
         model = Note
         fields = [
             'id',
+            'author',
             'note_title',
             'note_text',
             'created_on',

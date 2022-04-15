@@ -12,7 +12,7 @@ class NoteViewSet(viewsets.ModelViewSet):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['id', 'note_title']
+    filterset_fields = ['id', 'author', 'note_title']
     search_fields = ['note_title', 'note_text']
     # permission_classes = [permissions.IsAuthenticated]
     # permissions if needed
