@@ -16,6 +16,9 @@ class NoteSerializer(ModelSerializer):
             'priority_choices'
         ]
 
+    def __str__(self):
+        return self.priority_choices
+
 class CategorySerializer(ModelSerializer):
     class Meta:
         model = Category

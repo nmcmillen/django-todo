@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from django.contrib.gis.db import models
 # from django.contrib.gis.geos import Point
-# from django.contrib.gis.geos import GEOSGeometry
 
 # Create your models here.
 class Category(models.Model):
@@ -18,8 +18,14 @@ class Event(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length = 100)
     date = models.DateField(null=True)
-    # duration = models.DurationField()
     all_day = models.BooleanField()
+    latitude = models.DecimalField(null=True, max_digits=8, decimal_places=5)
+    longitude = models.DecimalField(null=True, max_digits=8, decimal_places=5)
+    # location = models.PointField()
+    # latitude = models.FloatField(min_value=-90, max_value=90)
+    # latitude = models.FloatField(max_digits=3, decimal_places = 4)
+    # longitude = models.FloatField(min_value=-180, max_value=180)
+    # duration = models.DurationField()
     # location = models.Point()
 
     def __str__(self):
@@ -35,7 +41,6 @@ class Note(models.Model):
     completed = models.BooleanField(default=False)
     due_by = models.DateTimeField(null=True)
     note_category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    # May need to add numbers as '1' instead of direct integer
     CHOICE_SELECTION = [
         (1, 'Low'),
         (2, 'Medium'),
