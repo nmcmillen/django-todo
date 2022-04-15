@@ -1,4 +1,4 @@
-"""myproject URL Configuration
+"""todo URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from notes.serializers import *
+from notes import views
+
+router = routers.DefaultRouter()
+# r'notes' is the endpoint after "api" in urlpatterns
+router.register(r'notes', views.NoteViewSet)
+router.register(r'events', views.EventViewSet)
+router.register(r'categories', views.CategoryViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls))
+    # path('', include(router.urls)),
 ]
